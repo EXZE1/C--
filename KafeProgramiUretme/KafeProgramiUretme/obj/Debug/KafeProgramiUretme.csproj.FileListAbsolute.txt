@@ -1,0 +1,10 @@
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\bin\Debug\KafeProgramiUretme.exe.config
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\bin\Debug\KafeProgramiUretme.exe
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\bin\Debug\KafeProgramiUretme.pdb
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.csproj.AssemblyReference.cache
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.Form1.resources
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.Properties.Resources.resources
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.csproj.GenerateResource.cache
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.csproj.CoreCompileInputs.cache
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.exe
+C:\Users\oguzhan yucedag\source\repos\KafeProgramiUretme\KafeProgramiUretme\obj\Debug\KafeProgramiUretme.pdb
