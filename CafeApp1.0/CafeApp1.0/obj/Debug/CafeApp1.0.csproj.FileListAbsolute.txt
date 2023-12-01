@@ -1,0 +1,11 @@
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\bin\Debug\CafeApp1.0.exe.config
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\bin\Debug\CafeApp1.0.exe
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\bin\Debug\CafeApp1.0.pdb
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1.0.csproj.AssemblyReference.cache
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1._0.Form1.resources
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1._0.Properties.Resources.resources
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1.0.csproj.GenerateResource.cache
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1.0.csproj.CoreCompileInputs.cache
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1.0.exe
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1.0.pdb
+C:\Users\oguzhan yucedag\source\repos\CafeApp1.0\CafeApp1.0\obj\Debug\CafeApp1._0.menu.resources

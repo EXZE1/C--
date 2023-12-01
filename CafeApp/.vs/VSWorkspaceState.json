@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CafeApp"
+    "\\CafeApp",
+    "\\CafeApp\\bin",
+    "\\CafeApp\\bin\\Debug",
+    "\\CafeApp\\bin\\Release",
+    "\\CafeApp\\obj",
+    "\\CafeApp\\obj\\Debug",
+    "\\CafeApp\\obj\\Debug\\TempPE",
+    "\\CafeApp\\obj\\Release",
+    "\\CafeApp\\Properties"
   ],
   "SelectedNode": "\\CafeApp\\Form2.cs",
   "PreviewInSolutionExplorer": false

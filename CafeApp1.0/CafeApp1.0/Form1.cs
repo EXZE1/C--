@@ -8,49 +8,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CafeApp
+namespace CafeApp1._0
 {
     public partial class Form1 : Form
     {
+        int number_of_tables = 30;
         public static string cafe_name = "Milano Kafe";
-        int number_of_tables = 15;
-
-
-
         public Form1()
         {
             InitializeComponent();
-            string date = "12.11.2023 15:30";
+
         }
 
-        public void Form1_Load(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
             cafeName.Text = cafe_name;
 
             for (int i = 1; i <= number_of_tables; i++)
             {
                 Button btn = new Button();
                 btn.Name = i.ToString();
-                btn.Text = i.ToString();
+                btn.Font = new Font("Times New Roman", 13);
+                btn.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffe700");
+                btn.Text = " MASA "+i.ToString();
                 btn.Width = 170;
-                btn.Height = 100;
+                btn.Height = 80;
                 btn.Click += Btn_Click; //anlamadım 
                 flowLayoutPanel1.Controls.Add(btn);
             }
-
-
-            
         }
+
+
         public void Btn_Click(object sender, EventArgs e)
         {
             //Button btn = sender as Button;
             Button btn = (Button)sender; // anlamadım 
-            Form2 form2 = new Form2();
-            form2.Show();
+            menu menu = new menu();
+            menu.Show();
             Hide();
 
-            
+
         }
     }
 }
