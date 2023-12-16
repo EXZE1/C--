@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cafeName = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.FlowLayoutPanel();
             this.purchased = new System.Windows.Forms.FlowLayoutPanel();
@@ -35,7 +36,13 @@
             this.total = new System.Windows.Forms.Label();
             this.pay = new System.Windows.Forms.Button();
             this.totalValue = new System.Windows.Forms.Label();
+            this.cafeDataSet = new CafeApp.cafeDataSet();
+            this.cafeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cafeDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.purchased.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // cafeName
@@ -52,7 +59,7 @@
             // menu
             // 
             this.menu.AutoScroll = true;
-            this.menu.Location = new System.Drawing.Point(13, 91);
+            this.menu.Location = new System.Drawing.Point(12, 91);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(730, 366);
             this.menu.TabIndex = 3;
@@ -107,6 +114,22 @@
             this.totalValue.TabIndex = 6;
             this.totalValue.Text = "0 TL";
             this.totalValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalValue.Click += new System.EventHandler(this.totalValue_Click);
+            // 
+            // cafeDataSet
+            // 
+            this.cafeDataSet.DataSetName = "cafeDataSet";
+            this.cafeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cafeDataSetBindingSource
+            // 
+            this.cafeDataSetBindingSource.DataSource = this.cafeDataSet;
+            this.cafeDataSetBindingSource.Position = 0;
+            // 
+            // cafeDataSetBindingSource1
+            // 
+            this.cafeDataSetBindingSource1.DataSource = this.cafeDataSet;
+            this.cafeDataSetBindingSource1.Position = 0;
             // 
             // Form2
             // 
@@ -123,6 +146,9 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.purchased.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -136,5 +162,8 @@
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.Button pay;
         private System.Windows.Forms.Label totalValue;
+        private System.Windows.Forms.BindingSource cafeDataSetBindingSource;
+        private cafeDataSet cafeDataSet;
+        private System.Windows.Forms.BindingSource cafeDataSetBindingSource1;
     }
 }

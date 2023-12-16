@@ -30,6 +30,8 @@
         {
             this.cafeName = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataSet1 = new System.Data.DataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // cafeName
@@ -54,6 +56,10 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1207, 361);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -64,6 +70,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -72,6 +79,7 @@
 
         private System.Windows.Forms.Label cafeName;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Data.DataSet dataSet1;
     }
 }
 

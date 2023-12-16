@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="New_Microsoft_Access_VeritabanıDataSet" targetNamespace="http://tempuri.org/New_Microsoft_Access_VeritabanıDataSet.xsd" xmlns:mstns="http://tempuri.org/New_Microsoft_Access_VeritabanıDataSet.xsd" xmlns="http://tempuri.org/New_Microsoft_Access_VeritabanıDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="New_Microsoft_Access_VeritabanıConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="New_Microsoft_Access_VeritabanıConnectionString (Settings)" PropertyReference="ApplicationSettings.CafeApp1._0.Properties.Settings.GlobalReference.Default.New_Microsoft_Access_VeritabanıConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="New_Microsoft_Access_VeritabanıDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="New_Microsoft_Access_VeritabanıDataSet" msprop:Generator_DataSetName="New_Microsoft_Access_VeritabanıDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

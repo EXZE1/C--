@@ -42,7 +42,7 @@ namespace CafeApp
                 string contents = headers_contents[1];
 
                 labelHeader.Text = header;
-                labelHeader.Width = 520;
+                labelHeader.Width = 620;
                 labelHeader.Font = new Font(labelHeader.Font, FontStyle.Bold);
                 labelHeader.BackColor = Color.Bisque;
                 menu.Controls.Add(labelHeader);
@@ -62,6 +62,11 @@ namespace CafeApp
                     menu.Controls.Add(button);
                 }
             }
+        }
+
+        private void totalValue_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
