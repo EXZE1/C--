@@ -39,20 +39,18 @@ namespace CafeApp1._0
             this.oleDbConnection2 = new System.Data.OleDb.OleDbConnection();
             this.newMicrosoftAccessVeritabanıDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.cafeName = new System.Windows.Forms.Label();
-            this.menuu = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tableNameLabel = new System.Windows.Forms.Label();
+            this.BUTTON = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.menuu = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
             this.menuu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // new_Microsoft_Access_VeritabanıDataSet
@@ -83,55 +81,37 @@ namespace CafeApp1._0
             this.cafeName.Text = "label1";
             this.cafeName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // menuu
-            // 
-            this.menuu.AutoScroll = true;
-            this.menuu.Controls.Add(this.dataGridView1);
-            this.menuu.Location = new System.Drawing.Point(8, 93);
-            this.menuu.Name = "menuu";
-            this.menuu.Size = new System.Drawing.Size(709, 411);
-            this.menuu.TabIndex = 1;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 214);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
             this.panel2.Location = new System.Drawing.Point(750, 148);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(478, 229);
+            this.panel2.Size = new System.Drawing.Size(417, 230);
             this.panel2.TabIndex = 2;
             // 
-            // label1
+            // tableNameLabel
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(750, 93);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(420, 52);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.tableNameLabel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tableNameLabel.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.tableNameLabel.Location = new System.Drawing.Point(750, 93);
+            this.tableNameLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.tableNameLabel.Name = "tableNameLabel";
+            this.tableNameLabel.Size = new System.Drawing.Size(417, 53);
+            this.tableNameLabel.TabIndex = 3;
+            this.tableNameLabel.Text = "label1";
+            this.tableNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button1
+            // BUTTON
             // 
-            this.button1.Location = new System.Drawing.Point(990, 380);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 124);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BUTTON.Location = new System.Drawing.Point(990, 380);
+            this.BUTTON.Name = "BUTTON";
+            this.BUTTON.Size = new System.Drawing.Size(177, 125);
+            this.BUTTON.TabIndex = 4;
+            this.BUTTON.Text = "button1";
+            this.BUTTON.UseVisualStyleBackColor = true;
+            this.BUTTON.Click += new System.EventHandler(this.BUTTON_Click);
             // 
             // label2
             // 
@@ -141,7 +121,7 @@ namespace CafeApp1._0
             this.label2.Location = new System.Drawing.Point(751, 380);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(238, 57);
+            this.label2.Size = new System.Drawing.Size(235, 58);
             this.label2.TabIndex = 5;
             this.label2.Text = "TOTAL";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -152,7 +132,7 @@ namespace CafeApp1._0
             this.label3.Location = new System.Drawing.Point(879, 437);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 67);
+            this.label3.Size = new System.Drawing.Size(102, 68);
             this.label3.TabIndex = 6;
             this.label3.Text = "TL";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -163,34 +143,45 @@ namespace CafeApp1._0
             this.label4.Location = new System.Drawing.Point(750, 437);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 67);
+            this.label4.Size = new System.Drawing.Size(126, 68);
             this.label4.TabIndex = 7;
             this.label4.Text = "0";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // listBox1
+            // menuu
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(394, 510);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(231, 148);
-            this.listBox1.TabIndex = 1;
+            this.menuu.AutoScroll = true;
+            this.menuu.Controls.Add(this.label1);
+            this.menuu.Location = new System.Drawing.Point(9, 93);
+            this.menuu.Name = "menuu";
+            this.menuu.Size = new System.Drawing.Size(735, 412);
+            this.menuu.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Yellow;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(659, 33);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "food";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 707);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(1169, 593);
+            this.Controls.Add(this.menuu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BUTTON);
+            this.Controls.Add(this.tableNameLabel);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.menuu);
             this.Controls.Add(this.cafeName);
             this.Name = "menu";
             this.Text = "menu";
@@ -199,7 +190,6 @@ namespace CafeApp1._0
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).EndInit();
             this.menuu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -211,14 +201,13 @@ namespace CafeApp1._0
         private OleDbConnection oleDbConnection2;
         private System.Windows.Forms.BindingSource newMicrosoftAccessVeritabanıDataSetBindingSource1;
         private System.Windows.Forms.Label cafeName;
-        private System.Windows.Forms.Panel menuu;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label tableNameLabel;
+        private System.Windows.Forms.Button BUTTON;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.FlowLayoutPanel menuu;
+        private System.Windows.Forms.Label label1;
     }
 }

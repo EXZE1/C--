@@ -13,17 +13,35 @@ namespace CafeApp1._0
 {
     public partial class Form1 : Form
     {
-        int number_of_tables = 30;
+        int number_of_tables;
         public static string cafe_name = "Milano Kafe";
         public Form1()
         {
             InitializeComponent();
-
+            read_data();
         }
+        OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+        public void read_data()
         {
-
+            connectdb.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connectdb;
+            command.CommandText = ("Select * from cafebilgileri");
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["value"].ToString() == "cafename")
+                {
+                    cafeName.Text = reader["key"].ToString();
+                }
+                else if (reader["value"].ToString() == "numberoftables")
+                {
+                    number_of_tables = Int32.Parse(reader["key"].ToString());
+                }
+            }
+            connectdb.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,7 +52,7 @@ namespace CafeApp1._0
             for (int i = 1; i <= number_of_tables; i++)
             {
                 Button btn = new Button();
-                btn.Name = i.ToString();
+                btn.Name = i.ToString() + ". Masa";
                 btn.Font = new Font("Times New Roman", 13);
                 btn.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffe700");
                 btn.Text = " MASA "+i.ToString();
@@ -50,7 +68,7 @@ namespace CafeApp1._0
         {
             //Button btn = sender as Button;
             Button btn = (Button)sender; // anlamadım 
-            menu menu = new menu();
+            menu menu = new menu(btn.Name);
             menu.Show();
             Hide();
 

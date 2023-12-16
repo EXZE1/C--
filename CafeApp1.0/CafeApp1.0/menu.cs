@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,74 +16,165 @@ namespace CafeApp1._0
     public partial class menu : Form
     {
         
-        public menu()
+        public menu(string tableName)
         {
             InitializeComponent();
-            
+            read_data();
+
+            tableNameLabel.Text = tableName;
         }
-        OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
         int i;
-        void menu1()
+        OleDbConnection connectdb1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        public void read_data()
         {
-            DataTable dt = new DataTable();
-            OleDbDataAdapter da = new OleDbDataAdapter("Select * from tables", baglanti);
-            da.Fill(dt);
-            dataGridView1.DataSource = (dt);
-            //DataTable dt = new DataTable();
-            //using (OleDbDataAdapter da = new OleDbDataAdapter("Select * From tables", baglanti))
+
+            connectdb.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connectdb;
+            command.CommandText = ("Select * from cafebilgileri");
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["value"].ToString() == "cafename")
+                {
+                    cafeName.Text = reader["key"].ToString();
+                }
+                
+            }
+            connectdb1.Open();
+            OleDbCommand command1 = new OleDbCommand();
+            command1.Connection = connectdb;
+            command1.CommandText = ("Select * from MENU");
+            OleDbDataReader reader1 = command1.ExecuteReader();
+
+            //string[] menu_headers_contents = { "Başlangıçlar:Günün çorbası,Elma dilim patates,Parmak dilim patates",
+            //"Sandviçler:Tavuk Lokmalı Sandviç,Baharatlı İtalyan Sandviç",
+            //"Burgerler:Klasik Burger,Cheese Burger",
+            //"Pizzalar:Klasik Pizza,Margaritta",
+            //"Makarnalar:Sade Makarna,İtalyan Makarna",
+            //"Tatlılar:Kemal Paşa,Supangle",
+            //"Soğuk İçecekler:Kola,Fanta",
+            //"Sıcak İçecekler:Kahve,Çay"};
+
+
+            //for (int i = 0; i < menu_headers_contents.Length; i++)
             //{
-            //    da.Fill(dt);
+            //    Label labelHeader = new Label();
+            //    string[] headers_contents = menu_headers_contents[i].Split(':');
+            //    string header = headers_contents[0];
+            //    string contents = headers_contents[1];
+
+            //    labelHeader.Text = header;
+            //    labelHeader.Width = 620;
+            //    labelHeader.Font = new Font(labelHeader.Font, FontStyle.Bold);
+            //    labelHeader.BackColor = Color.Bisque;
+            //    menuu.Controls.Add(labelHeader);
+
+
+            //    string[] contents_array = contents.Split(',');
+            //    for (int j = 0; j < contents_array.Length; j++)
+            //    {
+            //        Label labelContent = new Label();
+            //        labelContent.Text = contents_array[j];
+            //        labelContent.Width = 400;
+            //        menuu.Controls.Add(labelContent);
+
+            //        Button button = new Button();
+            //        button.Text = "Add";
+
+            //        menuu.Controls.Add(button);
+            //    }
             //}
-            //dataGridView1.DataSource = dt;
+
+            int a = 1;
+
+            while (reader1.Read())
+            {
+                if ((reader1["türü"].ToString()) == "food")
+                {
+                    Label labelfood = new Label();
+                    labelfood.Text = reader1["içerik"].ToString();
+                    labelfood.Width = 300;
+                    labelfood.Font = new Font(labelfood.Font, FontStyle.Bold);
+                    labelfood.BackColor = Color.Bisque;
+                    menuu.Controls.Add(labelfood);
+                    //****
+                    Label labelprice = new Label();
+                    labelprice.Text = reader1["price"].ToString();
+                    labelprice.Width = 50;
+                    labelprice.Font = new Font(labelprice.Font, FontStyle.Bold);
+                    labelprice.BackColor = Color.Green;
+                    menuu.Controls.Add(labelprice);
+                    //***
+                    Label labelTL = new Label();
+                    labelTL.Text = "TL";
+                    labelTL.Width = 50;
+                    labelTL.Font = new Font(labelTL.Font, FontStyle.Bold);
+                    
+                    menuu.Controls.Add(labelTL);
+
+                    Button button = new Button();
+                    button.Text = "Add";
+                    menuu.Controls.Add((Button)button);
+
+                }
+
+                
+
+                else if((reader1["türü"].ToString()) == "drink")
+                {
+                    if(a == 1)
+                    {
+                        a++;
+                        Label labelDrink = new Label();
+                        labelDrink.Text = "DRİNK";
+                        labelDrink.Width = 500;
+                        labelDrink.Font = new Font("Arial", 14);
+                        labelDrink.TextAlign = ContentAlignment.MiddleCenter;
+                        
+                        labelDrink.Font = new Font(labelDrink.Font, FontStyle.Bold);
+                        labelDrink.BackColor = Color.Yellow;
+                        menuu.Controls.Add(labelDrink);
+                    }
+
+                    Label labeldrink= new Label();
+                    labeldrink.Text = reader1["içerik"].ToString();
+                    labeldrink.Width = 300;
+                    labeldrink.Font = new Font(labeldrink.Font, FontStyle.Bold);
+                    labeldrink.BackColor = Color.Bisque;
+                    menuu.Controls.Add(labeldrink);
+                    //***
+                    Label labelprice = new Label();
+                    labelprice.Text = reader1["price"].ToString();
+                    labelprice.Width = 50;
+                    labelprice.Font = new Font(labelprice.Font, FontStyle.Bold);
+                    labelprice.BackColor = Color.Green;
+                    menuu.Controls.Add(labelprice);
+                    //***
+                    Label labelTl = new Label();
+                    labelTl.Text = "TL";
+                    labelTl.Width = 50;
+                    labelTl.Font = new Font(labeldrink.Font, FontStyle.Bold);
+                    menuu.Controls.Add (labelTl);
+
+                    //***
+                    Button button = new Button();
+                    button.Text = "Add";
+                    menuu.Controls.Add((Button)button);
+                }
+
+            }
+
+
+            connectdb.Close();
 
         }
+
         private void menu_Load(object sender, EventArgs e)
         {
-            cafeName.Text = Form1.cafe_name;
-            menu1();
-            //DataTable DT = new DataTable();
-            //OleDbDataAdapter DA = new OleDbDataAdapter("Select coffees from coffeesMenu", baglanti);
-            //Label labelHeader = new Label();
-            //labelHeader.Text = DA.
-            //DA.Fill(DT);
+           
 
-            OleDbCommand komut;
-            OleDbDataReader oku;
-               
-                string[] mevsimler;
-                mevsimler = new string[5];
-                baglanti.Open();
-                komut = new OleDbCommand();
-                komut.CommandText = "Select coffees from coffeesMenu\", baglanti";
-                komut.Connection = baglanti;
-                oku = komut.ExecuteReader();
-                while (oku.Read())
-                {
-                
-                mevsimler[1] = oku[0].ToString();
-                i++;
-                    break;
-                }
-                for(int k= 0; k < 5; k++)
-                {
-                listBox1.Items.Add(i);
-                listBox1.Items.Add(mevsimler[1]);
-                }
-                baglanti.Close();
-
-
-            //for (int j = 0; j < contents_array.Length; j++)
-            //{
-            //    Label labelContent = new Label();
-            //    labelContent.Text = contents_array[j];
-            //    labelContent.Width = 400;
-            //    menuu.Controls.Add(labelContent);
-
-            //    Button button = new Button();
-            //    button.Text = "Add";
-
-            //    menuu.Controls.Add(button);
-            //}
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -96,6 +188,24 @@ namespace CafeApp1._0
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        public void button_Click(object sender, EventArgs e)
+        {
+
+            
+
+
+        }
+
+        private void BUTTON_Click(object sender, EventArgs e)
         {
 
         }
