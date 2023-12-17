@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,12 +21,15 @@ namespace CafeApp1._0
         {
             InitializeComponent();
             read_data();
-
+            orderhistory();
             tableNameLabel.Text = tableName;
         }
         OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
         int i;
         OleDbConnection connectdb1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+
+        OleDbConnection connectdb2 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        DataSet dataSet = new DataSet();
         public void read_data()
         {
 
@@ -88,44 +92,52 @@ namespace CafeApp1._0
             //}
 
             int a = 1;
+            int sayac = 0;
 
+            
             while (reader1.Read())
             {
+                //türü food olanları sırayla panele yazdırıyor 
+
                 if ((reader1["türü"].ToString()) == "food")
                 {
+                    //yemek adını yazdırıyor 
                     Label labelfood = new Label();
                     labelfood.Text = reader1["içerik"].ToString();
                     labelfood.Width = 300;
                     labelfood.Font = new Font(labelfood.Font, FontStyle.Bold);
                     labelfood.BackColor = Color.Bisque;
                     menuu.Controls.Add(labelfood);
-                    //****
+                    //****fiyat
                     Label labelprice = new Label();
                     labelprice.Text = reader1["price"].ToString();
                     labelprice.Width = 50;
                     labelprice.Font = new Font(labelprice.Font, FontStyle.Bold);
                     labelprice.BackColor = Color.Green;
                     menuu.Controls.Add(labelprice);
-                    //***
+                    //***tl yazdırıyor 
                     Label labelTL = new Label();
                     labelTL.Text = "TL";
                     labelTL.Width = 50;
-                    labelTL.Font = new Font(labelTL.Font, FontStyle.Bold);
-                    
+                    labelTL.Font = new Font(labelTL.Font, FontStyle.Bold);              
                     menuu.Controls.Add(labelTL);
-
-                    Button button = new Button();
+                    //buton 
+                    Button button = new Button();//(Button)sender;
                     button.Text = "Add";
+                    button.Margin = new Padding(0, 0, 2, 2); 
+                    button.Name = reader1["içerik"].ToString();
+                    button.Click += new System.EventHandler(this.Btn_Click);
                     menuu.Controls.Add((Button)button);
 
                 }
 
-                
+                //türü içecek olanları sırayla panele yazdırıyor 
 
                 else if((reader1["türü"].ToString()) == "drink")
                 {
                     if(a == 1)
                     {
+                        //***menu başlığını yazdırıyor
                         a++;
                         Label labelDrink = new Label();
                         labelDrink.Text = "DRİNK";
@@ -137,30 +149,33 @@ namespace CafeApp1._0
                         labelDrink.BackColor = Color.Yellow;
                         menuu.Controls.Add(labelDrink);
                     }
-
+                    //***içecek adını yazdırıyor
                     Label labeldrink= new Label();
                     labeldrink.Text = reader1["içerik"].ToString();
                     labeldrink.Width = 300;
                     labeldrink.Font = new Font(labeldrink.Font, FontStyle.Bold);
                     labeldrink.BackColor = Color.Bisque;
                     menuu.Controls.Add(labeldrink);
-                    //***
+                    //***fiyatı yazdırıyor
                     Label labelprice = new Label();
                     labelprice.Text = reader1["price"].ToString();
                     labelprice.Width = 50;
                     labelprice.Font = new Font(labelprice.Font, FontStyle.Bold);
                     labelprice.BackColor = Color.Green;
                     menuu.Controls.Add(labelprice);
-                    //***
+                    //***tl yazdırıyor 
                     Label labelTl = new Label();
                     labelTl.Text = "TL";
                     labelTl.Width = 50;
                     labelTl.Font = new Font(labeldrink.Font, FontStyle.Bold);
                     menuu.Controls.Add (labelTl);
 
-                    //***
+                    //***buton 
                     Button button = new Button();
                     button.Text = "Add";
+                    button.Margin = new Padding(0, 0, 2, 2);
+                    button.Name = reader1["içerik"].ToString();
+                    button.Click += new System.EventHandler(this.Btn_Click); // her buton için aynı işlevi vermemizi sağlıyor..
                     menuu.Controls.Add((Button)button);
                 }
 
@@ -170,12 +185,46 @@ namespace CafeApp1._0
             connectdb.Close();
 
         }
+        public void orderhistory()
+        {
+           
+           
+            
+            
+            
+
+            
+            
+            
+        }
+
+        
 
         private void menu_Load(object sender, EventArgs e)
         {
-           
+            //****************************************************************
+            connectdb2.Open();
+            OleDbDataAdapter Da = new OleDbDataAdapter("Select * from orderHistory", connectdb2);
+            DataTable Dt = new DataTable();
+            Da.Fill(dataSet, "orderHistory");
+            dataGridView1.DataSource = dataSet.Tables["orderHistory"];
+            Da.Dispose();
 
+            // orderhistory();
+            connectdb2.Close();
         }
+
+        public void Btn_Click(object sender, EventArgs e)//her buton için aynı işlem 
+        {
+            // ilk baştan sipariş geçmişi veri tabanına eklicez ondan sonra eklediklerimizi 
+            Button btn = (Button)sender;
+            
+           
+            MessageBox.Show(btn.Name);
+            
+
+
+        }  
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {//Provider=Microsoft.ACE.OLEDB.12.0;Data Source="C:\Users\oguzhan yucedag\Desktop\cafe.accdb"
@@ -205,9 +254,10 @@ namespace CafeApp1._0
 
         }
 
-        private void BUTTON_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("merhaba");
+            
         }
     }
 }

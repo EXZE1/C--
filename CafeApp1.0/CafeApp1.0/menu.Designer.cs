@@ -47,10 +47,16 @@ namespace CafeApp1._0
             this.label4 = new System.Windows.Forms.Label();
             this.menuu = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.cafeDataSet = new CafeApp1._0.cafeDataSet();
+            this.cafeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
             this.menuu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // new_Microsoft_Access_VeritabanıDataSet
@@ -84,9 +90,9 @@ namespace CafeApp1._0
             // panel2
             // 
             this.panel2.AutoScroll = true;
-            this.panel2.Location = new System.Drawing.Point(750, 148);
+            this.panel2.Location = new System.Drawing.Point(756, 147);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(417, 230);
+            this.panel2.Size = new System.Drawing.Size(411, 230);
             this.panel2.TabIndex = 2;
             // 
             // tableNameLabel
@@ -111,7 +117,6 @@ namespace CafeApp1._0
             this.BUTTON.TabIndex = 4;
             this.BUTTON.Text = "button1";
             this.BUTTON.UseVisualStyleBackColor = true;
-            this.BUTTON.Click += new System.EventHandler(this.BUTTON_Click);
             // 
             // label2
             // 
@@ -170,11 +175,32 @@ namespace CafeApp1._0
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // cafeDataSet
+            // 
+            this.cafeDataSet.DataSetName = "cafeDataSet";
+            this.cafeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cafeDataSetBindingSource
+            // 
+            this.cafeDataSetBindingSource.DataSource = this.cafeDataSet;
+            this.cafeDataSetBindingSource.Position = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(249, 582);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(627, 150);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 593);
+            this.ClientSize = new System.Drawing.Size(1169, 813);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -190,6 +216,9 @@ namespace CafeApp1._0
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).EndInit();
             this.menuu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -209,5 +238,8 @@ namespace CafeApp1._0
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel menuu;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource cafeDataSetBindingSource;
+        private cafeDataSet cafeDataSet;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
