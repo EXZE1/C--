@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace CafeApp
         {
             InitializeComponent();
         }
+        OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -66,6 +68,28 @@ namespace CafeApp
 
         private void totalValue_Click(object sender, EventArgs e)
         {
+
+        }
+        void listele()
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter da = new OleDbDataAdapter("Select * From orderHistory",baglanti);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void pay_Click(object sender, EventArgs e)
+        {
+            baglanti.Open();
+            OleDbCommand komut1 = new OleDbCommand("insert into orderHistory (tableName,food,price,staff) values(@p1,@p2,@p3,@p4)",baglanti);
+            komut1.Parameters.AddWithValue("@p1", textBox1.Text);
+            komut1.Parameters.AddWithValue("@p2", textBox2.Text);
+            komut1.Parameters.AddWithValue("@p3", textBox3.Text);
+            komut1.Parameters.AddWithValue("@p4", textBox4.Text);
+            komut1.ExecuteNonQuery();
+            listele();
+            baglanti.Close();
+
 
         }
     }

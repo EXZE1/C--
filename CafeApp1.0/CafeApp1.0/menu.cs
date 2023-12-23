@@ -22,18 +22,19 @@ namespace CafeApp1._0
         {
             InitializeComponent();
             read_data();
-            orderhistory();
+            
             tableNameLabel.Text = tableName;
         }
-        
+        OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+
         OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//kafe bilgileri
-        int i;
+        
         OleDbConnection connectdb1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//menu
 
-        OleDbConnection connectdb2 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");// sipariş geçmişini gösterme 
-        OleDbConnection connectdb4 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
-        DataSet dataSet = new DataSet();
+       
+        OleDbConnection yemekarama = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//menu
 
+        
         
 
         public void read_data()
@@ -58,44 +59,6 @@ namespace CafeApp1._0
             command1.CommandText = ("Select * from MENU");
             OleDbDataReader reader1 = command1.ExecuteReader();
 
-            //string[] menu_headers_contents = { "Başlangıçlar:Günün çorbası,Elma dilim patates,Parmak dilim patates",
-            //"Sandviçler:Tavuk Lokmalı Sandviç,Baharatlı İtalyan Sandviç",
-            //"Burgerler:Klasik Burger,Cheese Burger",
-            //"Pizzalar:Klasik Pizza,Margaritta",
-            //"Makarnalar:Sade Makarna,İtalyan Makarna",
-            //"Tatlılar:Kemal Paşa,Supangle",
-            //"Soğuk İçecekler:Kola,Fanta",
-            //"Sıcak İçecekler:Kahve,Çay"};
-
-
-            //for (int i = 0; i < menu_headers_contents.Length; i++)
-            //{
-            //    Label labelHeader = new Label();
-            //    string[] headers_contents = menu_headers_contents[i].Split(':');
-            //    string header = headers_contents[0];
-            //    string contents = headers_contents[1];
-
-            //    labelHeader.Text = header;
-            //    labelHeader.Width = 620;
-            //    labelHeader.Font = new Font(labelHeader.Font, FontStyle.Bold);
-            //    labelHeader.BackColor = Color.Bisque;
-            //    menuu.Controls.Add(labelHeader);
-
-
-            //    string[] contents_array = contents.Split(',');
-            //    for (int j = 0; j < contents_array.Length; j++)
-            //    {
-            //        Label labelContent = new Label();
-            //        labelContent.Text = contents_array[j];
-            //        labelContent.Width = 400;
-            //        menuu.Controls.Add(labelContent);
-
-            //        Button button = new Button();
-            //        button.Text = "Add";
-
-            //        menuu.Controls.Add(button);
-            //    }
-            //}
 
             int a = 1;
             int b = 1;
@@ -203,7 +166,7 @@ namespace CafeApp1._0
 
 
             connectdb.Close();
-
+            connectdb1.Close();
         }
         
 
@@ -216,47 +179,50 @@ namespace CafeApp1._0
         }
         public void listele()
         {
-            connectdb2.Open();
-            OleDbDataAdapter Da = new OleDbDataAdapter("Select * from orderHistory", connectdb2);
-            DataTable Dt = new DataTable();
-            Da.Fill(dataSet, "orderHistory");
-            dataGridView1.DataSource = dataSet.Tables["orderHistory"];
-            Da.Dispose();
+            DataTable dt = new DataTable();
+            OleDbDataAdapter da = new OleDbDataAdapter("Select * From orderHistory", baglanti);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
 
-            // orderhistory();
-            connectdb2.Close();
         }
-
+        int deger;
+        public void arama(string btnName,ref int deger) // btnName = yemek adı ,deger = yemeğin fiyatıdır menu veri tabanından yemek adından bulup fiyatını degere kaydediyor
+        {
+            yemekarama.Open();
+           
+            OleDbCommand yemekarama1 = new OleDbCommand();
+            yemekarama1.Connection = yemekarama;
+            yemekarama1.CommandText = ("Select * from MENU");
+            OleDbDataReader oku1 = yemekarama1.ExecuteReader();
+            while (oku1.Read())
+            {
+                if ((oku1["içerik"].ToString()) == btnName)
+                {
+                    deger = Convert.ToInt32(oku1["price"]);
+                    
+                }
+            }
+            yemekarama.Close();
+        }
+        
         public void Btn_Click(object sender, EventArgs e)//her buton için aynı işlem 
         {
             // ilk baştan sipariş geçmişi veri tabanına eklicez ondan sonra eklediklerimizi 
             Button btn = (Button)sender;
-            MessageBox.Show(btn.Name);
-            int deger = 0;
-
-            connectdb2.Open();
-            connectdb4.Open();
-            OleDbCommand arama = new OleDbCommand("Select * From MENU where içerik like'%" + btn.Name + "%'", connectdb2);
-            OleDbDataReader oku1 = arama.ExecuteReader();
-            OleDbCommand komut1 = new OleDbCommand("insert into orderHistory (tableName,food,price,staff) values (@p1,@p2,@p3,@p4)", connectdb4);
-            
-            while (oku1.Read())
-            {
-                 deger = Convert.ToInt32(oku1["price"]);
-            }
+           
+            arama(btn.Name,ref deger);
+            MessageBox.Show(tableNameLabel.Text.ToString());
+            baglanti.Open();
+            OleDbCommand komut1 = new OleDbCommand("insert into orderHistory (tableName,food,price,staff) values(@p1,@p2,@p3,@p4)", baglanti);
             komut1.Parameters.AddWithValue("@p1", tableNameLabel.Text);
             komut1.Parameters.AddWithValue("@p2", btn.Name);
-            komut1.Parameters.AddWithValue("@p3", textBox1.Text);
+            komut1.Parameters.AddWithValue("@p3", deger);
             komut1.Parameters.AddWithValue("@p4", comboBox1.Text);
+            komut1.ExecuteNonQuery();
             listele();
-            connectdb4.Close();
-           
-            connectdb2.Close();
-            
-            //Dt.Clear();
-            
-
-        }  
+            baglanti.Close();
+          
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {//Provider=Microsoft.ACE.OLEDB.12.0;Data Source="C:\Users\oguzhan yucedag\Desktop\cafe.accdb"
