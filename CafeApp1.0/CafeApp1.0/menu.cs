@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 
 namespace CafeApp1._0
@@ -24,12 +25,17 @@ namespace CafeApp1._0
             orderhistory();
             tableNameLabel.Text = tableName;
         }
-        OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        
+        OleDbConnection connectdb = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//kafe bilgileri
         int i;
-        OleDbConnection connectdb1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        OleDbConnection connectdb1 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//menu
 
-        OleDbConnection connectdb2 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        OleDbConnection connectdb2 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");// sipariş geçmişini gösterme 
+        OleDbConnection connectdb4 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
         DataSet dataSet = new DataSet();
+
+        
+
         public void read_data()
         {
 
@@ -92,7 +98,7 @@ namespace CafeApp1._0
             //}
 
             int a = 1;
-            int sayac = 0;
+            int b = 1;
 
             
             while (reader1.Read())
@@ -101,6 +107,20 @@ namespace CafeApp1._0
 
                 if ((reader1["türü"].ToString()) == "food")
                 {
+                    if (a == 1)
+                    {
+                        //***menu başlığını yazdırıyor
+                        a++;
+                        Label labelDrink = new Label();
+                        labelDrink.Text = "FOOD";
+                        labelDrink.Width = 500;
+                        labelDrink.Font = new Font("Arial", 14);
+                        labelDrink.TextAlign = ContentAlignment.MiddleCenter;
+
+                        labelDrink.Font = new Font(labelDrink.Font, FontStyle.Bold);
+                        labelDrink.BackColor = Color.Yellow;
+                        menuu.Controls.Add(labelDrink);
+                    }
                     //yemek adını yazdırıyor 
                     Label labelfood = new Label();
                     labelfood.Text = reader1["içerik"].ToString();
@@ -135,10 +155,10 @@ namespace CafeApp1._0
 
                 else if((reader1["türü"].ToString()) == "drink")
                 {
-                    if(a == 1)
+                    if(b == 1)
                     {
                         //***menu başlığını yazdırıyor
-                        a++;
+                        b++;
                         Label labelDrink = new Label();
                         labelDrink.Text = "DRİNK";
                         labelDrink.Width = 500;
@@ -185,24 +205,17 @@ namespace CafeApp1._0
             connectdb.Close();
 
         }
-        public void orderhistory()
-        {
-           
-           
-            
-            
-            
-
-            
-            
-            
-        }
-
         
+
+
 
         private void menu_Load(object sender, EventArgs e)
         {
             //****************************************************************
+           
+        }
+        public void listele()
+        {
             connectdb2.Open();
             OleDbDataAdapter Da = new OleDbDataAdapter("Select * from orderHistory", connectdb2);
             DataTable Dt = new DataTable();
@@ -218,11 +231,30 @@ namespace CafeApp1._0
         {
             // ilk baştan sipariş geçmişi veri tabanına eklicez ondan sonra eklediklerimizi 
             Button btn = (Button)sender;
-            
-           
             MessageBox.Show(btn.Name);
-            
+            int deger = 0;
 
+            connectdb2.Open();
+            connectdb4.Open();
+            OleDbCommand arama = new OleDbCommand("Select * From MENU where içerik like'%" + btn.Name + "%'", connectdb2);
+            OleDbDataReader oku1 = arama.ExecuteReader();
+            OleDbCommand komut1 = new OleDbCommand("insert into orderHistory (tableName,food,price,staff) values (@p1,@p2,@p3,@p4)", connectdb4);
+            
+            while (oku1.Read())
+            {
+                 deger = Convert.ToInt32(oku1["price"]);
+            }
+            komut1.Parameters.AddWithValue("@p1", tableNameLabel.Text);
+            komut1.Parameters.AddWithValue("@p2", btn.Name);
+            komut1.Parameters.AddWithValue("@p3", textBox1.Text);
+            komut1.Parameters.AddWithValue("@p4", comboBox1.Text);
+            listele();
+            connectdb4.Close();
+           
+            connectdb2.Close();
+            
+            //Dt.Clear();
+            
 
         }  
 
