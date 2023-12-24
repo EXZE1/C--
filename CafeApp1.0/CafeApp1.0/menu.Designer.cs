@@ -2,7 +2,7 @@
 
 namespace CafeApp1._0
 {
-    partial class menu
+    partial class panel2
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,6 @@ namespace CafeApp1._0
             this.oleDbConnection2 = new System.Data.OleDb.OleDbConnection();
             this.newMicrosoftAccessVeritabanıDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.cafeName = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableNameLabel = new System.Windows.Forms.Label();
             this.BUTTON = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@ namespace CafeApp1._0
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
@@ -82,28 +82,20 @@ namespace CafeApp1._0
             this.cafeName.Location = new System.Drawing.Point(1, -2);
             this.cafeName.Margin = new System.Windows.Forms.Padding(0);
             this.cafeName.Name = "cafeName";
-            this.cafeName.Size = new System.Drawing.Size(1169, 92);
+            this.cafeName.Size = new System.Drawing.Size(1189, 92);
             this.cafeName.TabIndex = 0;
             this.cafeName.Text = "label1";
             this.cafeName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Location = new System.Drawing.Point(756, 147);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(411, 230);
-            this.panel2.TabIndex = 2;
             // 
             // tableNameLabel
             // 
             this.tableNameLabel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tableNameLabel.Font = new System.Drawing.Font("Lucida Handwriting", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.tableNameLabel.Location = new System.Drawing.Point(750, 93);
+            this.tableNameLabel.Location = new System.Drawing.Point(710, 93);
             this.tableNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.tableNameLabel.Name = "tableNameLabel";
-            this.tableNameLabel.Size = new System.Drawing.Size(417, 53);
+            this.tableNameLabel.Size = new System.Drawing.Size(480, 53);
             this.tableNameLabel.TabIndex = 3;
             this.tableNameLabel.Text = "label1";
             this.tableNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,7 +105,7 @@ namespace CafeApp1._0
             // 
             this.BUTTON.Location = new System.Drawing.Point(990, 380);
             this.BUTTON.Name = "BUTTON";
-            this.BUTTON.Size = new System.Drawing.Size(177, 125);
+            this.BUTTON.Size = new System.Drawing.Size(200, 125);
             this.BUTTON.TabIndex = 4;
             this.BUTTON.Text = "button1";
             this.BUTTON.UseVisualStyleBackColor = true;
@@ -123,10 +115,10 @@ namespace CafeApp1._0
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Location = new System.Drawing.Point(751, 380);
+            this.label2.Location = new System.Drawing.Point(710, 380);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 58);
+            this.label2.Size = new System.Drawing.Size(276, 58);
             this.label2.TabIndex = 5;
             this.label2.Text = "TOTAL";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,10 +137,10 @@ namespace CafeApp1._0
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(750, 437);
+            this.label4.Location = new System.Drawing.Point(716, 437);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 68);
+            this.label4.Size = new System.Drawing.Size(160, 68);
             this.label4.TabIndex = 7;
             this.label4.Text = "0";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,7 +151,7 @@ namespace CafeApp1._0
             this.menuu.AutoScroll = true;
             this.menuu.Location = new System.Drawing.Point(9, 93);
             this.menuu.Name = "menuu";
-            this.menuu.Size = new System.Drawing.Size(735, 412);
+            this.menuu.Size = new System.Drawing.Size(695, 412);
             this.menuu.TabIndex = 8;
             // 
             // cafeDataSet
@@ -200,11 +192,20 @@ namespace CafeApp1._0
             this.textBox1.Size = new System.Drawing.Size(210, 52);
             this.textBox1.TabIndex = 11;
             // 
-            // menu
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(710, 149);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 225);
+            this.flowLayoutPanel1.TabIndex = 12;
+            // 
+            // panel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 813);
+            this.ClientSize = new System.Drawing.Size(1193, 813);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
@@ -214,9 +215,8 @@ namespace CafeApp1._0
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BUTTON);
             this.Controls.Add(this.tableNameLabel);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.cafeName);
-            this.Name = "menu";
+            this.Name = "panel2";
             this.Text = "menu";
             this.Load += new System.EventHandler(this.menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).EndInit();
@@ -237,7 +237,6 @@ namespace CafeApp1._0
         private OleDbConnection oleDbConnection2;
         private System.Windows.Forms.BindingSource newMicrosoftAccessVeritabanıDataSetBindingSource1;
         private System.Windows.Forms.Label cafeName;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label tableNameLabel;
         private System.Windows.Forms.Button BUTTON;
         private System.Windows.Forms.Label label2;
@@ -249,5 +248,6 @@ namespace CafeApp1._0
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

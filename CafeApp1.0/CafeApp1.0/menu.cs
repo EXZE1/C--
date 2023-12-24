@@ -11,19 +11,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace CafeApp1._0
 {
-    public partial class menu : Form
+    public partial class panel2 : Form
     {
         
-        public menu(string tableName)
+        public panel2(string tableName)
         {
             InitializeComponent();
             read_data();
             
             tableNameLabel.Text = tableName;
+            listele();
         }
         OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
 
@@ -175,14 +177,16 @@ namespace CafeApp1._0
         private void menu_Load(object sender, EventArgs e)
         {
             //****************************************************************
-           
+            
         }
         public void listele()
         {
+            baglanti.Open();
             DataTable dt = new DataTable();
             OleDbDataAdapter da = new OleDbDataAdapter("Select * From orderHistory", baglanti);
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+            baglanti.Close();
 
         }
         int deger;
@@ -204,6 +208,50 @@ namespace CafeApp1._0
             }
             yemekarama.Close();
         }
+       
+
+        public void masalar(string tableName)
+        {
+            string masaNumarası = tableName;
+            baglanti.Open();
+            OleDbCommand siparişler = new OleDbCommand();
+            siparişler.Connection = baglanti;
+            siparişler.CommandText = ("Select * from orderHistory");
+            OleDbDataReader siparişleroku = siparişler.ExecuteReader();
+            while (siparişleroku.Read())
+            {
+                if ((siparişleroku["tableName"].ToString()) == masaNumarası)
+                {
+                    //sipariş edilen yemek adı
+                    Label labelsiparis = new Label();
+                    labelsiparis.Text = siparişleroku["food"].ToString();
+                    labelsiparis.Width = 180;
+                    labelsiparis.Font = new Font(labelsiparis.Font, FontStyle.Bold);
+                    labelsiparis.BackColor = Color.Bisque;
+                    flowLayoutPanel1.Controls.Add(labelsiparis);
+                    //*****sipariş edilen yemek fiyatı
+                    Label labelsiparisprice = new Label();
+                    labelsiparisprice.Text = siparişleroku["price"].ToString();
+                    labelsiparisprice.Width = 30;
+                    labelsiparisprice.Font = new Font(labelsiparisprice.Font, FontStyle.Bold);
+                    labelsiparisprice.BackColor = Color.Green;
+                    flowLayoutPanel1.Controls.Add(labelsiparisprice);
+                    //**** sipariş edilen yemek tl 
+                    Label labelsiparisTl = new Label();
+                    labelsiparisTl.Text = "TL";
+                    labelsiparisTl.Width = 30;
+                    labelsiparisTl.Font = new Font(labelsiparisTl.Font, FontStyle.Bold);
+                    flowLayoutPanel1.Controls.Add(labelsiparisTl);
+                    //buton clear
+                    Button buttonclear = new Button();
+                    buttonclear.Text = "Add";
+                    buttonclear.Margin = new Padding(0, 0, 2, 2);
+                    buttonclear.Name = siparişleroku["food"].ToString();
+                    buttonclear.Click += new System.EventHandler(this.buttonclear_Click); // her buton için aynı işlevi vermemizi sağlıyor..
+                    flowLayoutPanel1.Controls.Add((Button)buttonclear);
+                }
+            }
+        }
         
         public void Btn_Click(object sender, EventArgs e)//her buton için aynı işlem 
         {
@@ -212,6 +260,7 @@ namespace CafeApp1._0
            
             arama(btn.Name,ref deger);
             MessageBox.Show(tableNameLabel.Text.ToString());
+            baglanti.Close();
             baglanti.Open();
             OleDbCommand komut1 = new OleDbCommand("insert into orderHistory (tableName,food,price,staff) values(@p1,@p2,@p3,@p4)", baglanti);
             komut1.Parameters.AddWithValue("@p1", tableNameLabel.Text);
@@ -219,9 +268,15 @@ namespace CafeApp1._0
             komut1.Parameters.AddWithValue("@p3", deger);
             komut1.Parameters.AddWithValue("@p4", comboBox1.Text);
             komut1.ExecuteNonQuery();
-            listele();
             baglanti.Close();
-          
+            masalar(tableNameLabel.Text);
+            
+        }
+        public void buttonclear_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("c");
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -254,7 +309,7 @@ namespace CafeApp1._0
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("merhaba");
+            MessageBox.Show("a");
             
         }
     }

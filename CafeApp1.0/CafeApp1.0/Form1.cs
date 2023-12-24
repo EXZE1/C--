@@ -68,7 +68,7 @@ namespace CafeApp1._0
         {
             //Button btn = sender as Button;
             Button btn = (Button)sender; // anlamadım 
-            menu menu = new menu(btn.Name);
+            panel2 menu = new panel2(btn.Name);
             menu.Show();
             Hide();
 
