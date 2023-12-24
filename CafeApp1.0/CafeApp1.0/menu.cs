@@ -22,10 +22,10 @@ namespace CafeApp1._0
         public panel2(string tableName)
         {
             InitializeComponent();
-            read_data();
-            
+            read_data();         
             tableNameLabel.Text = tableName;
             listele();
+            masalar(tableNameLabel.Text);
         }
         OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
 
@@ -257,7 +257,7 @@ namespace CafeApp1._0
         {
             // ilk baştan sipariş geçmişi veri tabanına eklicez ondan sonra eklediklerimizi 
             Button btn = (Button)sender;
-           
+            flowLayoutPanel1.Controls.Clear();
             arama(btn.Name,ref deger);
             MessageBox.Show(tableNameLabel.Text.ToString());
             baglanti.Close();
@@ -311,6 +311,11 @@ namespace CafeApp1._0
         {
             MessageBox.Show("a");
             
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

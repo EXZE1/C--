@@ -49,8 +49,8 @@ namespace CafeApp1._0
             this.cafeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
@@ -167,7 +167,7 @@ namespace CafeApp1._0
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(430, 523);
+            this.dataGridView1.Location = new System.Drawing.Point(307, 563);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -179,18 +179,11 @@ namespace CafeApp1._0
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Oğuzhan"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 511);
+            this.comboBox1.Location = new System.Drawing.Point(173, 511);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(83, 555);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 52);
-            this.textBox1.TabIndex = 11;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -200,13 +193,22 @@ namespace CafeApp1._0
             this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 225);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 511);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "EKLEYEN PERSONEL";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 813);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuu);
@@ -226,7 +228,6 @@ namespace CafeApp1._0
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -247,7 +248,7 @@ namespace CafeApp1._0
         private cafeDataSet cafeDataSet;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
     }
 }
