@@ -109,6 +109,7 @@ namespace CafeApp1._0
             this.BUTTON.TabIndex = 4;
             this.BUTTON.Text = "button1";
             this.BUTTON.UseVisualStyleBackColor = true;
+            this.BUTTON.Click += new System.EventHandler(this.BUTTON_Click_1);
             // 
             // label2
             // 

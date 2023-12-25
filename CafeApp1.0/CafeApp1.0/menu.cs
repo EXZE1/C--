@@ -208,9 +208,10 @@ namespace CafeApp1._0
             }
             yemekarama.Close();
         }
-       
 
-        public void masalar(string tableName)
+        int kasa;
+        string k;
+        public void masalar(string tableName)//sipariş geçmişi
         {
             string masaNumarası = tableName;
             baglanti.Open();
@@ -232,6 +233,9 @@ namespace CafeApp1._0
                     //*****sipariş edilen yemek fiyatı
                     Label labelsiparisprice = new Label();
                     labelsiparisprice.Text = siparişleroku["price"].ToString();
+                    k = siparişleroku["price"].ToString();//kasa**********************************************************kasa
+                    kasa = kasa + int.Parse(k);//kasa
+                    label4.Text = kasa.ToString();//kasa
                     labelsiparisprice.Width = 30;
                     labelsiparisprice.Font = new Font(labelsiparisprice.Font, FontStyle.Bold);
                     labelsiparisprice.BackColor = Color.Green;
@@ -258,6 +262,7 @@ namespace CafeApp1._0
             // ilk baştan sipariş geçmişi veri tabanına eklicez ondan sonra eklediklerimizi 
             Button btn = (Button)sender;
             flowLayoutPanel1.Controls.Clear();
+            kasa = 0;
             arama(btn.Name,ref deger);
             MessageBox.Show(tableNameLabel.Text.ToString());
             baglanti.Close();
@@ -316,6 +321,11 @@ namespace CafeApp1._0
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BUTTON_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(kasa.ToString());
         }
     }
 }
