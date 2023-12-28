@@ -92,5 +92,10 @@ namespace CafeApp
 
 
         }
+
+        private void menu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

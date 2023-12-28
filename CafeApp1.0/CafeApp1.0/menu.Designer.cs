@@ -51,6 +51,7 @@ namespace CafeApp1._0
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
@@ -99,7 +100,6 @@ namespace CafeApp1._0
             this.tableNameLabel.TabIndex = 3;
             this.tableNameLabel.Text = "label1";
             this.tableNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.tableNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // BUTTON
             // 
@@ -109,7 +109,6 @@ namespace CafeApp1._0
             this.BUTTON.TabIndex = 4;
             this.BUTTON.Text = "button1";
             this.BUTTON.UseVisualStyleBackColor = true;
-            this.BUTTON.Click += new System.EventHandler(this.BUTTON_Click_1);
             // 
             // label2
             // 
@@ -145,7 +144,6 @@ namespace CafeApp1._0
             this.label4.TabIndex = 7;
             this.label4.Text = "0";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // menuu
             // 
@@ -184,7 +182,6 @@ namespace CafeApp1._0
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 10;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -203,11 +200,22 @@ namespace CafeApp1._0
             this.label1.Text = "EKLEYEN PERSONEL";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1050, 531);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "geri";
+            this.button1.UseVisualStyleBackColor = true;
+            //this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // panel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 813);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.comboBox1);
@@ -251,5 +259,6 @@ namespace CafeApp1._0
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

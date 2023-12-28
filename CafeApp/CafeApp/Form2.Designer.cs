@@ -69,6 +69,7 @@
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(730, 366);
             this.menu.TabIndex = 3;
+            this.menu.Paint += new System.Windows.Forms.PaintEventHandler(this.menu_Paint);
             // 
             // purchased
             // 

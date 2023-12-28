@@ -24,6 +24,7 @@ namespace CafeApp1._0
             InitializeComponent();
             read_data();         
             tableNameLabel.Text = tableName;
+            
             listele();
             masalar(tableNameLabel.Text);
         }
@@ -36,8 +37,8 @@ namespace CafeApp1._0
        
         OleDbConnection yemekarama = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");//menu
 
-        
-        
+        OleDbConnection baglanti11 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
+        //OleDbCommand sorgu1;
 
         public void read_data()
         {
@@ -190,6 +191,7 @@ namespace CafeApp1._0
 
         }
         int deger;
+        
         public void arama(string btnName,ref int deger) // btnName = yemek adı ,deger = yemeğin fiyatıdır menu veri tabanından yemek adından bulup fiyatını degere kaydediyor
         {
             yemekarama.Open();
@@ -211,6 +213,8 @@ namespace CafeApp1._0
 
         int kasa;
         string k;
+        
+
         public void masalar(string tableName)//sipariş geçmişi
         {
             string masaNumarası = tableName;
@@ -248,7 +252,7 @@ namespace CafeApp1._0
                     flowLayoutPanel1.Controls.Add(labelsiparisTl);
                     //buton clear
                     Button buttonclear = new Button();
-                    buttonclear.Text = "Add";
+                    buttonclear.Text = "-";
                     buttonclear.Margin = new Padding(0, 0, 2, 2);
                     buttonclear.Name = siparişleroku["food"].ToString();
                     buttonclear.Click += new System.EventHandler(this.buttonclear_Click); // her buton için aynı işlevi vermemizi sağlıyor..
@@ -279,8 +283,96 @@ namespace CafeApp1._0
         }
         public void buttonclear_Click(object sender, EventArgs e)
         {
+            Button cleardButton = (Button)sender;
+            flowLayoutPanel1.Controls.Clear();
+            kasa = 0;
+            MessageBox.Show(cleardButton.Name);
+            clearfonk(cleardButton.Name,tableNameLabel.Text);
 
-            MessageBox.Show("c");
+        }
+        public void clearfonk(string buttonclear, string tableName1)
+        {
+            string masaNumarası = tableName1;
+            
+            
+            OleDbCommand siparişler0 = new OleDbCommand();
+            siparişler0.Connection = baglanti;
+            siparişler0.CommandText = ("Select * from orderHistory");
+            OleDbDataReader siparişleroku0 = siparişler0.ExecuteReader();
+            while (siparişleroku0.Read())
+            {
+                if ((siparişleroku0["tableName"].ToString()) == masaNumarası)
+                {
+                    OleDbCommand clear = new OleDbCommand("delete from orderHistory where food=@p1", baglanti);
+                    clear.Parameters.AddWithValue("@p1", buttonclear);
+                }
+            }
+            baglanti.Close();
+            masalar(tableNameLabel.Text);
+
+
+
+
+            //    string sorgu = "Delete From orderHistory Where Numara=@no";
+            //sorgu1 = new OleDbCommand(sorgu, baglanti);
+            //baglanti.Open();
+
+
+
+            //flowLayoutPanel1.Controls.Clear();
+            //kasa = 0;
+            //baglanti.Close();
+            //baglanti.Open();
+            //OleDbCommand siparişler11 = new OleDbCommand();
+            //siparişler11.Connection = baglanti;
+            //siparişler11.CommandText = ("Select * from orderHistory");
+            //OleDbDataReader siparişleroku11 = siparişler11.ExecuteReader();
+            //while (siparişleroku11.Read())
+            //{
+            //    if (siparişleroku11["tableName"].ToString() == tableNameLabel.Text)
+            //    {
+
+            //        OleDbCommand clear = new OleDbCommand("delete from orderHistory where food=@a1", baglanti11);
+            //        clear.Parameters.AddWithValue("@a1", buttonclear);
+            //    }
+            //}
+            //baglanti.Close();
+            // masalar(tableNameLabel.Text);
+
+            //baglanti.Open();
+            //OleDbCommand clear = new OleDbCommand("delete from orderHistory where food=@a1", baglanti11);
+            //clear.Parameters.AddWithValue("@a1", buttonclear);
+            //clear.ExecuteNonQuery();
+            //baglanti11.Close();
+            //masalar(tableNameLabel.Text);
+            //OleDbCommand verisil = new OleDbCommand("delete from Access_uygulamalar where Sıra_No = " + buttonclear. + "", baglanti11);
+
+            //verisil.ExecuteNonQuery();
+            //baglanti.Close();
+
+
+
+            //baglanti.Open();
+            //OleDbCommand siparişler11 = new OleDbCommand();
+            //siparişler11.Connection = baglanti;
+            //siparişler11.CommandText = ("Select * from orderHistory");
+            //OleDbDataReader siparişleroku11 = siparişler11.ExecuteReader();
+            //while (siparişleroku11.Read())
+            //{
+            //    if (siparişleroku11["tableName"].ToString() == tableNameLabel.Text)
+            //    {
+            //        OleDbCommand clear = new OleDbCommand("delete from orderHistory where food=@a1", baglanti11);
+            //        clear.Parameters.AddWithValue("@a1", buttonclear);
+            //    }
+            //}
+            //    //if (tableNameLabel.Text== siparişleroku11["tableName"].ToString())
+            //    //{
+
+            //OleDbCommand clear = new OleDbCommand("delete from orderHistory where food=@a1", baglanti11);
+            //clear.Parameters.AddWithValue("@a1", buttonclear);
+            //clear.ExecuteNonQuery();
+            //baglanti11.Close();
+
 
         }
 
@@ -315,7 +407,10 @@ namespace CafeApp1._0
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("a");
-            
+            Form1 form = new Form1();
+            this.Hide();
+            form.Show();
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,5 +422,7 @@ namespace CafeApp1._0
         {
             MessageBox.Show(kasa.ToString());
         }
+
+        
     }
 }
