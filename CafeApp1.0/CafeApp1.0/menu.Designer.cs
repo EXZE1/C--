@@ -109,6 +109,7 @@ namespace CafeApp1._0
             this.BUTTON.TabIndex = 4;
             this.BUTTON.Text = "button1";
             this.BUTTON.UseVisualStyleBackColor = true;
+            this.BUTTON.Click += new System.EventHandler(this.BUTTON_Click_1);
             // 
             // label2
             // 
@@ -208,7 +209,7 @@ namespace CafeApp1._0
             this.button1.TabIndex = 14;
             this.button1.Text = "geri";
             this.button1.UseVisualStyleBackColor = true;
-            //this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
