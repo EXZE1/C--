@@ -14,7 +14,7 @@ namespace CafeApp1._0
     public partial class Form1 : Form
     {
         int number_of_tables;
-        public static string cafe_name = "Milano Kafe";
+        public static string cafe_name ;
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace CafeApp1._0
             {
                 if (reader["value"].ToString() == "cafename")
                 {
-                    cafeName.Text = reader["key"].ToString();
+                    cafe_name = reader["key"].ToString();
                 }
                 else if (reader["value"].ToString() == "numberoftables")
                 {
@@ -73,6 +73,13 @@ namespace CafeApp1._0
             Hide();
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            giris giris1 = new giris();
+            giris1.Show();  
+            this.Hide();
         }
     }
 }

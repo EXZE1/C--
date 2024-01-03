@@ -27,6 +27,7 @@ namespace CafeApp1._0
             
             listele();
             masalar(tableNameLabel.Text);
+            personelfonk();
         }
         OleDbConnection baglanti = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
 
@@ -399,6 +400,44 @@ namespace CafeApp1._0
 
 
         }
+        public void personelfonk()
+        {
+            baglanti.Close(); 
+            baglanti.Open();
+            OleDbCommand per = new OleDbCommand();
+            per.Connection = baglanti;
+            per.CommandText = ("Select * from personeller");
+            OleDbDataReader peroku = per.ExecuteReader();   
+            while (peroku.Read())
+            {
+                string p = peroku["personelAdi"].ToString();
+                comboBox1.Items.Add(p);
+            }
+
+        }
+
+        public void hesabıKapa(string tableName2)
+        {
+            string masaNumarası1 = tableName2;
+            baglanti.Close();
+            baglanti.Open();
+            OleDbCommand hesapsil = new OleDbCommand();
+            hesapsil.Connection = baglanti;
+            hesapsil.CommandText = ("Select * from orderHistory");
+            OleDbDataReader hesapsilreader = hesapsil.ExecuteReader();
+            OleDbCommand hesapclear = new OleDbCommand("delete from orderHistory where tableName=@p1", baglanti);
+            while (hesapsilreader.Read())
+            {
+                if (hesapsilreader["tableName"].ToString() == masaNumarası1)
+                {
+                    hesapclear.Parameters.AddWithValue("@p1", masaNumarası1);
+                }
+
+            }
+
+            hesapclear.ExecuteNonQuery();
+            baglanti.Close();
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {//Provider=Microsoft.ACE.OLEDB.12.0;Data Source="C:\Users\oguzhan yucedag\Desktop\cafe.accdb"
@@ -449,8 +488,18 @@ namespace CafeApp1._0
         {
             MessageBox.Show(kasa.ToString()+" ödendi ve ana kasaya eklendi");
             //anakasa = anakasa + kasa;
-
+            hesabıKapa(tableNameLabel.Text);
+            flowLayoutPanel1.Controls.Clear();
+            kasa = 0;
+            masalar(tableNameLabel.Text);
             MessageBox.Show(anakasa.ToString());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            giris giris1= new giris();
+            giris1.Show(); 
+            this.Hide();
         }
     }
 }

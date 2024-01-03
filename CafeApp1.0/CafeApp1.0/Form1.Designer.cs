@@ -31,6 +31,7 @@
             this.cafeName = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataSet1 = new System.Data.DataSet();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +61,22 @@
             // 
             this.dataSet1.DataSetName = "NewDataSet";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1109, 463);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "ayarlar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 509);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.cafeName);
             this.Name = "Form1";
@@ -80,6 +92,7 @@
         private System.Windows.Forms.Label cafeName;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Data.DataSet dataSet1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
