@@ -20,7 +20,7 @@ namespace CafeApp1._0
             read_data();
         }
         OleDbConnection connectdb999 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
-        private void giris_Load(object sender, EventArgs e)
+        private void giris_Load(object sender, EventArgs e) 
         {
 
         }

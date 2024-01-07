@@ -24,13 +24,28 @@ namespace CafeApp1._0
             connectdb.Open();
             OleDbCommand command = new OleDbCommand();
             command.Connection = connectdb;
-            command.CommandText = ("Select * from cafebilgileri");
+            command.CommandText = ("Select * from login");
             OleDbDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                if (reader["value"].ToString() == "cafename")
+                if (reader["kullanıcıadi"].ToString() == textBox1.Text)
                 {
-                     //a= reader["key"].ToString();
+                    if(reader["sifre"].ToString()==textBox2.Text)
+                    {
+                        giris giris = new giris();
+                        giris.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("şifre  yanlış..");
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("kullanıcı adı yanlış..");
                 }
 
             }
@@ -39,6 +54,13 @@ namespace CafeApp1._0
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 menu = new Form1();
+            menu.Show();
+            this.Hide();
         }
     }
 }

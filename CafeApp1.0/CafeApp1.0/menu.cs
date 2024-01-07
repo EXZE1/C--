@@ -25,7 +25,7 @@ namespace CafeApp1._0
             read_data();         
             tableNameLabel.Text = tableName;
             
-            listele();
+            //listele();
             masalar(tableNameLabel.Text);
             personelfonk();
         }
@@ -181,16 +181,16 @@ namespace CafeApp1._0
             //****************************************************************
             
         }
-        public void listele()
-        {
-            baglanti.Open();
-            DataTable dt = new DataTable();
-            OleDbDataAdapter da = new OleDbDataAdapter("Select * From orderHistory", baglanti);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            baglanti.Close();
+        //public void listele()
+        //{
+        //    baglanti.Open();
+        //    DataTable dt = new DataTable();
+        //    OleDbDataAdapter da = new OleDbDataAdapter("Select * From orderHistory", baglanti);
+        //    da.Fill(dt);
+        //    dataGridView1.DataSource = dt;
+        //    baglanti.Close();
 
-        }
+        //}
         int deger;
         
         public void arama(string btnName,ref int deger) // btnName = yemek adı ,deger = yemeğin fiyatıdır menu veri tabanından yemek adından bulup fiyatını degere kaydediyor
@@ -478,7 +478,7 @@ namespace CafeApp1._0
 
         private void button1_Click(object sender, EventArgs e)//geri tuşu
         {
-            MessageBox.Show("a");
+            
             Form1 form = new Form1();
             this.Hide();
             form.Show();
@@ -497,8 +497,8 @@ namespace CafeApp1._0
 
         private void button2_Click(object sender, EventArgs e)
         {
-            giris giris1= new giris();
-            giris1.Show(); 
+            Form2 form2 = new Form2();
+            form2.Show(); 
             this.Hide();
         }
     }

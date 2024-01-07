@@ -77,8 +77,8 @@ namespace CafeApp1._0
 
         private void button1_Click(object sender, EventArgs e)
         {
-            giris giris1 = new giris();
-            giris1.Show();  
+            Form2 form2 = new Form2();
+            form2.Show();
             this.Hide();
         }
     }

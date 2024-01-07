@@ -47,7 +47,6 @@ namespace CafeApp1._0
             this.menuu = new System.Windows.Forms.FlowLayoutPanel();
             this.cafeDataSet = new CafeApp1._0.cafeDataSet();
             this.cafeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,7 +57,6 @@ namespace CafeApp1._0
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // new_Microsoft_Access_VeritabanıDataSet
@@ -165,16 +163,6 @@ namespace CafeApp1._0
             this.cafeDataSetBindingSource.DataSource = this.cafeDataSet;
             this.cafeDataSetBindingSource.Position = 0;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(336, 608);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(627, 150);
-            this.dataGridView1.TabIndex = 9;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -225,13 +213,12 @@ namespace CafeApp1._0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 813);
+            this.ClientSize = new System.Drawing.Size(1193, 552);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -247,7 +234,6 @@ namespace CafeApp1._0
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,7 +253,6 @@ namespace CafeApp1._0
         private System.Windows.Forms.FlowLayoutPanel menuu;
         private System.Windows.Forms.BindingSource cafeDataSetBindingSource;
         private cafeDataSet cafeDataSet;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
