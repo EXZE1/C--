@@ -44,60 +44,61 @@ namespace CafeApp1._0
             }
             connectdb999.Close();
         }
-        public void kafemasaSayisiDegistirme()
-        {
-            try
-            {
-                connectdb999.Open();
-                OleDbCommand KAFEadi = new OleDbCommand("update cafebilgileri set key=@p1,value=@p2 where id=@p3", connectdb999);
-                KAFEadi.Parameters.AddWithValue("@p3", 2);
-                KAFEadi.Parameters.AddWithValue("@p1", textBox1.Text);
-                KAFEadi.Parameters.AddWithValue("@p2", "numberoftables");
-                KAFEadi.ExecuteNonQuery();
-                connectdb999.Close();
-            }
-            catch (ArgumentNullException)
-            {
-                MessageBox.Show("Değer girmediniz.");
+        //public void kafemasaSayisiDegistirme()
+        //{
+        //    try
+        //    {
+        //        connectdb999.Open();
+        //        OleDbCommand KAFEadi = new OleDbCommand("update cafebilgileri set key=@p1,value=@p2 where id=@p3", connectdb999);
+        //        KAFEadi.Parameters.AddWithValue("@p3", 2);
+        //        KAFEadi.Parameters.AddWithValue("@p1", textBox1.Text);
+        //        KAFEadi.Parameters.AddWithValue("@p2", "numberoftables");
+        //        KAFEadi.ExecuteNonQuery();
+        //        connectdb999.Close();
+        //    }
+        //    catch (ArgumentNullException)
+        //    {
+        //        MessageBox.Show("Değer girmediniz.");
 
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show( "Hatalı türde veri girdiniz.");
-            }
-            catch (OverflowException)
-            {
-                MessageBox.Show("Girdiğiniz değer çok büyük.");
-            }
-            MessageBox.Show("çalıştı.");
-            //cmd = new OleDbCommand();
-            //connectdb.Open();
-            //cmd.Connection = connectdb;
-            //cmd.CommandText = "update cafebilgileri set  (key) values ('" + textBox1.Text + "')";
-            //cmd.ExecuteNonQuery();
-            //connectdb.Close();
+        //    }
+        //    catch (FormatException)
+        //    {
+        //        MessageBox.Show( "Hatalı türde veri girdiniz.");
+        //    }
+        //    catch (OverflowException)
+        //    {
+        //        MessageBox.Show("Girdiğiniz değer çok büyük.");
+        //    }
+        //    MessageBox.Show("çalıştı.");
+        //    //cmd = new OleDbCommand();
+        //    //connectdb.Open();
+        //    //cmd.Connection = connectdb;
+        //    //cmd.CommandText = "update cafebilgileri set  (key) values ('" + textBox1.Text + "')";
+        //    //cmd.ExecuteNonQuery();
+        //    //connectdb.Close();
 
 
 
-        }
+        //}
 
-        public void kafeAdiDegistirme()
-        {
-
-            connectdb999.Open();
-            OleDbCommand KAFEadi = new OleDbCommand("update cafebilgileri set key='" + textBox2.Text + "' where id='"+1+"'", connectdb999);
-            //KAFEadi.Parameters.AddWithValue("@p3", 1);
-            //KAFEadi.Parameters.AddWithValue("@p1", textBox2.Text);
-            //KAFEadi.Parameters.AddWithValue("@p2", "cafename");
-            KAFEadi.ExecuteNonQuery();
-            connectdb999.Close();
-
-        }
+     
        
-
+        //*************BURDA KALDIM*********
         private void button1_Click(object sender, EventArgs e)//masa sayısı değiştirme 
         {
-            kafemasaSayisiDegistirme();
+            connectdb999.Open();
+            OleDbCommand KAFEmasaAdedi = new OleDbCommand();
+            KAFEmasaAdedi.Connection = connectdb999;//******************************* BURDA KALDIMMMMMMMMMMMMMMMMM***************
+
+            // Sorguyu parametrelerle oluştur
+            KAFEmasaAdedi.CommandText = "UPDATE cafebilgileri SET [key]=@p1 WHERE [value]=@p2";
+            KAFEmasaAdedi.Parameters.AddWithValue("@p1", textBox1.Text);
+            KAFEmasaAdedi.Parameters.AddWithValue("@p2", "numberoftables");
+
+            // Komutu çalıştır
+            KAFEmasaAdedi.ExecuteNonQuery();
+
+            connectdb999.Close();
             MessageBox.Show("masa sayısı değişti..");
             //connectdb.Open();
             //OleDbCommand command1 = new OleDbCommand();
@@ -121,7 +122,20 @@ namespace CafeApp1._0
 
         private void button2_Click(object sender, EventArgs e) //kafe adını değiştirme 
         {
-            kafeAdiDegistirme();
+            connectdb999.Open();
+            OleDbCommand KAFEadi = new OleDbCommand();
+            KAFEadi.Connection = connectdb999;
+
+            // Sorguyu parametrelerle oluştur
+            KAFEadi.CommandText = "UPDATE cafebilgileri SET [key]=@p1 WHERE [value]=@p2";
+            KAFEadi.Parameters.AddWithValue("@p1", textBox2.Text);
+            KAFEadi.Parameters.AddWithValue("@p2", "cafename");
+
+            // Komutu çalıştır
+            KAFEadi.ExecuteNonQuery();
+
+            connectdb999.Close();
+
             MessageBox.Show("kafe adı değişti..");
         }
 
