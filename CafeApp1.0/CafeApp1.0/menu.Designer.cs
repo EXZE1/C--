@@ -47,11 +47,11 @@ namespace CafeApp1._0
             this.menuu = new System.Windows.Forms.FlowLayoutPanel();
             this.cafeDataSet = new CafeApp1._0.cafeDataSet();
             this.cafeDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.new_Microsoft_Access_VeritabanıDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newMicrosoftAccessVeritabanıDataSetBindingSource1)).BeginInit();
@@ -163,14 +163,6 @@ namespace CafeApp1._0
             this.cafeDataSetBindingSource.DataSource = this.cafeDataSet;
             this.cafeDataSetBindingSource.Position = 0;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 511);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 10;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -181,7 +173,7 @@ namespace CafeApp1._0
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(6, 511);
+            this.label1.Location = new System.Drawing.Point(12, 516);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 24);
             this.label1.TabIndex = 13;
@@ -190,7 +182,7 @@ namespace CafeApp1._0
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(336, 511);
+            this.button1.Location = new System.Drawing.Point(508, 517);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 24);
@@ -201,24 +193,34 @@ namespace CafeApp1._0
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(453, 512);
+            this.button2.Location = new System.Drawing.Point(617, 517);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 24);
             this.button2.TabIndex = 15;
             this.button2.Text = "ayarlar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(173, 514);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(191, 23);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "label5";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 552);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.menuu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -253,10 +255,10 @@ namespace CafeApp1._0
         private System.Windows.Forms.FlowLayoutPanel menuu;
         private System.Windows.Forms.BindingSource cafeDataSetBindingSource;
         private cafeDataSet cafeDataSet;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label5;
     }
 }

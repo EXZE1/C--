@@ -18,6 +18,7 @@ namespace CafeApp1._0
         {
             InitializeComponent();
             read_data();
+            yemeksilme();
         }
         OleDbConnection connectdb999 = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\oguzhan yucedag\Desktop\cafe.accdb");
         private void giris_Load(object sender, EventArgs e) 
@@ -44,51 +45,37 @@ namespace CafeApp1._0
             }
             connectdb999.Close();
         }
-        //public void kafemasaSayisiDegistirme()
-        //{
-        //    try
-        //    {
-        //        connectdb999.Open();
-        //        OleDbCommand KAFEadi = new OleDbCommand("update cafebilgileri set key=@p1,value=@p2 where id=@p3", connectdb999);
-        //        KAFEadi.Parameters.AddWithValue("@p3", 2);
-        //        KAFEadi.Parameters.AddWithValue("@p1", textBox1.Text);
-        //        KAFEadi.Parameters.AddWithValue("@p2", "numberoftables");
-        //        KAFEadi.ExecuteNonQuery();
-        //        connectdb999.Close();
-        //    }
-        //    catch (ArgumentNullException)
-        //    {
-        //        MessageBox.Show("Değer girmediniz.");
+        public void yemeksilme()
+        {
+            connectdb999.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connectdb999;
+            command.CommandText = ("Select * from MENU");
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["türü"].ToString() == "yiyecek")
+                {
+                    comboBox2.Items.Add(reader["içerik"].ToString());
 
-        //    }
-        //    catch (FormatException)
-        //    {
-        //        MessageBox.Show( "Hatalı türde veri girdiniz.");
-        //    }
-        //    catch (OverflowException)
-        //    {
-        //        MessageBox.Show("Girdiğiniz değer çok büyük.");
-        //    }
-        //    MessageBox.Show("çalıştı.");
-        //    //cmd = new OleDbCommand();
-        //    //connectdb.Open();
-        //    //cmd.Connection = connectdb;
-        //    //cmd.CommandText = "update cafebilgileri set  (key) values ('" + textBox1.Text + "')";
-        //    //cmd.ExecuteNonQuery();
-        //    //connectdb.Close();
+                }
+                if (reader["türü"].ToString() == "içecek")
+                {
+                    comboBox2.Items.Add(reader["içerik"].ToString());
+                }
 
-
-
-        //}
+            }
+            connectdb999.Close();
+        }
 
      
        
-        //*************BURDA KALDIM*********
+        
         private void button1_Click(object sender, EventArgs e)//masa sayısı değiştirme 
         {
             connectdb999.Open();
             OleDbCommand KAFEmasaAdedi = new OleDbCommand();
-            KAFEmasaAdedi.Connection = connectdb999;//******************************* BURDA KALDIMMMMMMMMMMMMMMMMM***************
+            KAFEmasaAdedi.Connection = connectdb999;
 
             // Sorguyu parametrelerle oluştur
             KAFEmasaAdedi.CommandText = "UPDATE cafebilgileri SET [key]=@p1 WHERE [value]=@p2";
@@ -119,6 +106,7 @@ namespace CafeApp1._0
             //connectdb.Close();
             
         }
+        int günlükkasa = 0;
 
         private void button2_Click(object sender, EventArgs e) //kafe adını değiştirme 
         {
@@ -142,9 +130,9 @@ namespace CafeApp1._0
         private void button3_Click(object sender, EventArgs e)//PERSONEL EKLEME
         {
             connectdb999.Open();
-            OleDbCommand komut1 = new OleDbCommand("insert into personeller (personelAdi) values(@p1)", connectdb999);
+            OleDbCommand komut1 = new OleDbCommand("insert into personeller (personelAdi,personelSifresi) values(@p1,@p2)", connectdb999);
             komut1.Parameters.AddWithValue("@p1", textBox3.Text);
-            
+            komut1.Parameters.AddWithValue("@p2", textBox6.Text);
             komut1.ExecuteNonQuery();
             connectdb999.Close();
             MessageBox.Show("personel eklenmiştir..");
@@ -166,6 +154,81 @@ namespace CafeApp1._0
             Form1 menu = new Form1();
             menu.Show();
             this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+            //günlük sattığı ürünlerden ne kadar para elde ettiği
+            connectdb999.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connectdb999;
+            command.CommandText = ("Select * from Siparis_Gecmisi");
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["sıfırlama"].ToString() == "s")
+                {
+                    günlükkasa = günlükkasa + Int32.Parse(reader["price"].ToString());
+                }
+                
+            }
+            connectdb999.Close();
+
+
+
+            //bütün masalarda ki verileri silme...
+            DialogResult result = MessageBox.Show("bütün masalarda ki hesaplar silmek istiyor musunuz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                connectdb999.Open();
+                OleDbCommand hesapsil = new OleDbCommand();
+                hesapsil.Connection = connectdb999;
+                hesapsil.CommandText = ("Select * from Siparis_Gecmisi");
+                OleDbDataReader hesapsilreader = hesapsil.ExecuteReader();
+                OleDbCommand hesapclear = new OleDbCommand("delete from Siparis_Gecmisi where sıfırlama=@p1", connectdb999);
+                while (hesapsilreader.Read())
+                {
+                    if (hesapsilreader["sıfırlama"].ToString() == "s")
+                    {
+                        hesapclear.Parameters.AddWithValue("@p1", "s");
+                    }
+
+                }
+
+                hesapclear.ExecuteNonQuery();
+                connectdb999.Close();
+                MessageBox.Show("bütün masalarda ki hesaplar silindi... " + günlükkasa + "tl "+ "günlük kazancınızdır");
+            }
+            else
+            {
+                MessageBox.Show("hesapları temizleme işlemi gerçekleşmedi");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("menüden" + comboBox2.Text + "silmek istediğinize eminmisiniz ?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                connectdb999.Open();
+                OleDbCommand hesapsil = new OleDbCommand();
+                hesapsil.Connection = connectdb999;
+                hesapsil.CommandText = ("Select * from MENU");
+                OleDbDataReader hesapsilreader = hesapsil.ExecuteReader();
+                OleDbCommand hesapclear = new OleDbCommand("delete from MENU where içerik=@p1", connectdb999);
+                while (hesapsilreader.Read())
+                {
+                    if (hesapsilreader["içerik"].ToString() == comboBox2.Text)
+                    {
+                        hesapclear.Parameters.AddWithValue("@p1", comboBox2.Text);
+                    }
+
+                }
+
+                hesapclear.ExecuteNonQuery();
+                connectdb999.Close();
+            }
         }
     }
 }

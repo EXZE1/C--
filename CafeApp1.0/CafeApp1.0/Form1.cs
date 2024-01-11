@@ -68,8 +68,12 @@ namespace CafeApp1._0
         {
             //Button btn = sender as Button;
             Button btn = (Button)sender; // anlamadım 
-            panel2 menu = new panel2(btn.Name);
-            menu.Show();
+            Form3 form3 = new Form3(btn.Name);
+            
+            form3.Show();
+            //panel2 menu = new panel2(btn.Name);
+            //menu.Show();
+
             Hide();
 
 
@@ -81,5 +85,7 @@ namespace CafeApp1._0
             form2.Show();
             this.Hide();
         }
+
+        
     }
 }

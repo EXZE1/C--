@@ -13,3 +13,4 @@ C:\Users\oguzhan yucedag\Documents\GitHub\C#\CafeApp1.0\CafeApp1.0\bin\x64\Debug
 C:\Users\oguzhan yucedag\Documents\GitHub\C#\CafeApp1.0\CafeApp1.0\obj\x64\Debug\CafeApp1._0.panel2.resources
 C:\Users\oguzhan yucedag\Documents\GitHub\C#\CafeApp1.0\CafeApp1.0\obj\x64\Debug\CafeApp1._0.Form2.resources
 C:\Users\oguzhan yucedag\Documents\GitHub\C#\CafeApp1.0\CafeApp1.0\obj\x64\Debug\CafeApp1._0.giris.resources
+C:\Users\oguzhan yucedag\Documents\GitHub\C#\CafeApp1.0\CafeApp1.0\obj\x64\Debug\CafeApp1._0.Form3.resources
