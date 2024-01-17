@@ -58,7 +58,7 @@ namespace CafeApp1._0
                 btn.Text = " MASA "+i.ToString();
                 btn.Width = 170;
                 btn.Height = 80;
-                btn.Click += Btn_Click; //anlamadım 
+                btn.Click += Btn_Click; 
                 flowLayoutPanel1.Controls.Add(btn);
             }
         }
@@ -66,13 +66,11 @@ namespace CafeApp1._0
 
         public void Btn_Click(object sender, EventArgs e)
         {
-            //Button btn = sender as Button;
-            Button btn = (Button)sender; // anlamadım 
+            Button btn = (Button)sender; 
             Form3 form3 = new Form3(btn.Name);
             
             form3.Show();
-            //panel2 menu = new panel2(btn.Name);
-            //menu.Show();
+           
 
             Hide();
 

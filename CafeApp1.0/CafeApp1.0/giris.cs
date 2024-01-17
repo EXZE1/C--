@@ -87,27 +87,11 @@ namespace CafeApp1._0
 
             connectdb999.Close();
             MessageBox.Show("masa sayısı değişti..");
-            //connectdb.Open();
-            //OleDbCommand command1 = new OleDbCommand();
-            //command1.Connection = connectdb;
-            //command1.CommandText = ("Select * from cafebilgileri");
-            //OleDbDataReader reader1 = command1.ExecuteReader();
-            //while (reader1.Read())
-            //{
-            //    if (reader1["value"].ToString() == "cafename")
-            //    {
-            //        string kafeadi = reader1["key"].ToString();
-            //    }
-            //    else if (reader1["value"].ToString() == "numberoftables")
-            //    {
-            //        string masaSayisi = reader1["key"].ToString();
-            //    }
-            //}
-            //connectdb.Close();
+            
             
         }
         int günlükkasa = 0;
-
+        int anakasa;
         private void button2_Click(object sender, EventArgs e) //kafe adını değiştirme 
         {
             connectdb999.Open();
@@ -147,6 +131,7 @@ namespace CafeApp1._0
             komut1.Parameters.AddWithValue("@p3", textBox5.Text);
             komut1.ExecuteNonQuery();
             connectdb999.Close();
+            MessageBox.Show("menüye ekleme yapıldı...");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -204,6 +189,21 @@ namespace CafeApp1._0
             {
                 MessageBox.Show("hesapları temizleme işlemi gerçekleşmedi");
             }
+            
+            connectdb999.Open();
+            OleDbCommand command1 = new OleDbCommand();
+            command1.Connection = connectdb999;
+            command1.CommandText = ("Select * from siparisler");
+            OleDbDataReader reader1 = command1.ExecuteReader();
+            while (reader1.Read())
+            {
+                
+                anakasa = anakasa + Int32.Parse(reader1["fiyati"].ToString());
+                
+
+            }
+            connectdb999.Close();
+            MessageBox.Show(anakasa.ToString()+"TL  Ana kasada para vardır ");
         }
 
         private void button7_Click(object sender, EventArgs e)

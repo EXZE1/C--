@@ -68,7 +68,7 @@ namespace CafeApp1._0
             int a = 1;
             int b = 1;
 
-            
+
             while (reader1.Read())
             {
                 //türü yiyecek olanları sırayla panele yazdırıyor 
@@ -107,17 +107,18 @@ namespace CafeApp1._0
                     Label labelTL = new Label();
                     labelTL.Text = "TL";
                     labelTL.Width = 50;
-                    labelTL.Font = new Font(labelTL.Font, FontStyle.Bold);              
+                    labelTL.Font = new Font(labelTL.Font, FontStyle.Bold);
                     menuu.Controls.Add(labelTL);
                     //buton 
                     Button button = new Button();//(Button)sender;
                     button.Text = "Add";
-                    button.Margin = new Padding(0, 0, 2, 2); 
+                    button.Margin = new Padding(0, 0, 2, 2);
                     button.Name = reader1["içerik"].ToString();
                     button.Click += new System.EventHandler(this.Btn_Click);
                     menuu.Controls.Add((Button)button);
 
                 }
+            
 
                 //türü içecek olanları sırayla panele yazdırıyor 
 
@@ -179,19 +180,8 @@ namespace CafeApp1._0
 
         private void menu_Load(object sender, EventArgs e)
         {
-            //****************************************************************
-            
         }
-        //public void listele()
-        //{
-        //    baglanti.Open();
-        //    DataTable dt = new DataTable();
-        //    OleDbDataAdapter da = new OleDbDataAdapter("Select * From Siparis_Gecmisi", baglanti);
-        //    da.Fill(dt);
-        //    dataGridView1.DataSource = dt;
-        //    baglanti.Close();
-
-        //}
+    
         int deger;
         
         public void arama(string btnName,ref int deger) // btnName = yiyecek adı ,deger = yemeğin fiyatıdır menu veri tabanından yiyecek adından bulup fiyatını degere kaydediyor
@@ -335,96 +325,11 @@ namespace CafeApp1._0
             baglanti.Close();
             masalar(tableNameLabel.Text);
 
-            //***********************************************************
-
-            //while (siparişleroku0.Read())
-            //{
-            //    string a = siparişleroku0["yiyecek"].ToString();
-            //    string b = buttonclear.ToString();
-            //    if ((siparişleroku0["yiyecek"].ToString()) == buttonclear)
-            //    {
-            //        OleDbCommand clear = new OleDbCommand("delete from Siparis_Gecmisi where yiyecek=@p1", baglanti);
-            //        clear.Parameters.AddWithValue("@p1", buttonclear);
-            //    }
-            //}
-
-            //    string sorgu = "Delete From Siparis_Gecmisi Where Numara=@no";
-            //sorgu1 = new OleDbCommand(sorgu, baglanti);
-            //baglanti.Open();
-
-
-
-            //flowLayoutPanel1.Controls.Clear();
-            //kasa = 0;
-            //baglanti.Close();
-            //baglanti.Open();
-            //OleDbCommand siparişler11 = new OleDbCommand();
-            //siparişler11.Connection = baglanti;
-            //siparişler11.CommandText = ("Select * from Siparis_Gecmisi");
-            //OleDbDataReader siparişleroku11 = siparişler11.ExecuteReader();
-            //while (siparişleroku11.Read())
-            //{
-            //    if (siparişleroku11["tableName"].ToString() == tableNameLabel.Text)
-            //    {
-
-            //        OleDbCommand clear = new OleDbCommand("delete from Siparis_Gecmisi where yiyecek=@a1", baglanti11);
-            //        clear.Parameters.AddWithValue("@a1", buttonclear);
-            //    }
-            //}
-            //baglanti.Close();
-            // masalar(tableNameLabel.Text);
-
-            //baglanti.Open();
-            //OleDbCommand clear = new OleDbCommand("delete from Siparis_Gecmisi where yiyecek=@a1", baglanti11);
-            //clear.Parameters.AddWithValue("@a1", buttonclear);
-            //clear.ExecuteNonQuery();
-            //baglanti11.Close();
-            //masalar(tableNameLabel.Text);
-            //OleDbCommand verisil = new OleDbCommand("delete from Access_uygulamalar where Sıra_No = " + buttonclear. + "", baglanti11);
-
-            //verisil.ExecuteNonQuery();
-            //baglanti.Close();
-
-
-
-            //baglanti.Open();
-            //OleDbCommand siparişler11 = new OleDbCommand();
-            //siparişler11.Connection = baglanti;
-            //siparişler11.CommandText = ("Select * from Siparis_Gecmisi");
-            //OleDbDataReader siparişleroku11 = siparişler11.ExecuteReader();
-            //while (siparişleroku11.Read())
-            //{
-            //    if (siparişleroku11["tableName"].ToString() == tableNameLabel.Text)
-            //    {
-            //        OleDbCommand clear = new OleDbCommand("delete from Siparis_Gecmisi where yiyecek=@a1", baglanti11);
-            //        clear.Parameters.AddWithValue("@a1", buttonclear);
-            //    }
-            //}
-            //    //if (tableNameLabel.Text== siparişleroku11["tableName"].ToString())
-            //    //{
-
-            //OleDbCommand clear = new OleDbCommand("delete from Siparis_Gecmisi where yiyecek=@a1", baglanti11);
-            //clear.Parameters.AddWithValue("@a1", buttonclear);
-            //clear.ExecuteNonQuery();
-            //baglanti11.Close();
+            
 
 
         }
-        //public void personelfonk()
-        //{
-        //    baglanti.Close(); 
-        //    baglanti.Open();
-        //    OleDbCommand per = new OleDbCommand();
-        //    per.Connection = baglanti;
-        //    per.CommandText = ("Select * from personeller");
-        //    OleDbDataReader peroku = per.ExecuteReader();   
-        //    while (peroku.Read())
-        //    {
-        //        string p = peroku["personelAdi"].ToString();
-        //        comboBox1.Items.Add(p);
-        //    }
-
-        //}
+        
 
         public void hesabıKapa(string tableName2)
         {
@@ -470,10 +375,7 @@ namespace CafeApp1._0
         }
 
     
-        //MessageBox.Show("a");
-        //Form1 form = new Form1();
-        //this.Hide();
-        //form.Show();
+       
 
 
        

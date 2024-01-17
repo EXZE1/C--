@@ -150,7 +150,7 @@ namespace CafeApp1._0
             this.menuu.AutoScroll = true;
             this.menuu.Location = new System.Drawing.Point(9, 93);
             this.menuu.Name = "menuu";
-            this.menuu.Size = new System.Drawing.Size(695, 412);
+            this.menuu.Size = new System.Drawing.Size(695, 418);
             this.menuu.TabIndex = 8;
             // 
             // cafeDataSet

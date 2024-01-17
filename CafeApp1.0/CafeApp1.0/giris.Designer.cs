@@ -115,9 +115,9 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(741, 78);
+            this.label5.Location = new System.Drawing.Point(701, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 32);
+            this.label5.Size = new System.Drawing.Size(278, 32);
             this.label5.TabIndex = 7;
             this.label5.Text = "label5";
             // 
